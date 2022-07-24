@@ -41,19 +41,22 @@
 					</div>
 				</h3>
 			</div> 
-			
+
 	<!-- 主页 -->
 			<div class="show" id="list-mian">
 				<H1>hello Omega</H1>
 				<h3>点击左侧功能区开始使用</h3>
 				<br />
+				<h5>依赖Omega旁加载系统运行</h5>
+				<h5>显示	服务断开连接 说明本机无运行旁加载组件的Omega，请检查连接地址或重启Omega</h5>
+				<h5>该工具仅支持Windows，完善后考虑移动版</h5>
 				<br />
 				<br />
-				<p>说明</p>
-				<p>说明：这是一个基于websocket的OMEGA工具</p>
-				<p>我也不知道该写点什么，意思意思写点什么</p>
-				<p>做好功能再画界面，想到哪做到哪</p>
-				<p>现在只有基本通信的功能。闲着没事就搓。如果需要的人能突破一位数再考虑做吧</p>
+				<h6>
+					<p>说明：这是一个基于websocket的OMEGA工具</p>
+					<p>我也不知道该写点什么，意思意思写点什么。</p>
+					<p>现在只有基本通信的功能。想起来就写两行。如果需要的人多再考虑做吧</p>
+				</h6>
 			</div>
 	<!-- 命令执行 -->
 			<div class="show" id="list-command">
@@ -74,10 +77,6 @@
 					<span id="timeRangeValue" >0</span>
 					<input type="button" value="执行" onclick="msgTimeSet()">
 				</div>
-				<div>
-					<span>返回结果：</span>
-					<div id="msg-div"></div>
-				</div>
 			</div>
 	<!-- 玩家控制 -->
 			<div class="show" id="list-player">
@@ -94,6 +93,11 @@
 	<!-- 数据查询 -->
 			<div class="show" id="list-slelect">
 				<span>还没做4</span>
+			</div>
+			
+	<!-- 返回消息 -->
+			<div id="omg-msgDiv">
+				返回消息：
 			</div>
 		</div>
 	</body>

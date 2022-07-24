@@ -1,6 +1,6 @@
 var msg;
 var msgID = 0;
-var div = document.getElementById("msg-div");
+var div = document.getElementById("omg-msgDiv");
 window.onload = setSocket();
 var socket;//WebSocket，非必要，待优化
 
