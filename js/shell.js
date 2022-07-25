@@ -125,16 +125,15 @@ function killItems() {
  */
 // 获取玩家列表
 function playerList() {
-	msg = `{"client":` + (msgID += 1) + `,"function":"get_players_list","args":{}}`
-	shellMsg(msg);
 	let msgDiv = document.getElementById("player-list");
 	msgDiv.innerHTML = "";
+	msg = `{"client":` + (msgID += 1) + `,"function":"get_players_list","args":{}}`
+	shellMsg(msg);
 	setTimeout(function() {
 		for (let i = 0; i < omgData.data.length; i++) {
 			msgDiv.innerHTML += "玩家：" + omgData.data[i].name + "<br />";
-			let playerArray = {};
-			playerArray.push(omgData.data[i].name);
-			console.log(playerArray);
+			let playerArray;
+			console.log(omgData.data[i].name);
 		}
 	}, 10);
 
