@@ -30,16 +30,13 @@ function setSocket() {
 		// 处理数据
 		let jsonMsg = JSON.parse(e.data);
 		omgData = jsonMsg; //保存结果
+		msgDiv.innerHTML += "<br />";
 		msgDiv.innerHTML += "请求" + msgID + "：";
-
 		if (jsonMsg.violate == false) {
 			msgDiv.innerHTML += "成功";
 		} else {
 			msgDiv.innerHTML += "失败";
 		}
-
-		msgDiv.innerHTML += "<br />";
-
 	})
 	socket.addEventListener('close', function() {
 		for (let i = 0; i < classs.length; i++) {

@@ -127,9 +127,11 @@ function killItems() {
 function playerList() {
 	msg = `{"client":` + (msgID += 1) + `,"function":"get_players_list","args":{}}`
 	shellMsg(msg);
+	let msgDiv = document.getElementById("player-list");
+	msgDiv.innerHTML = "";
 	setTimeout(function() {
 		for (let i = 0; i < omgData.data.length; i++) {
-			document.getElementById("player-list").innerHTML += "玩家：" + omgData.data[i].name + "<br />";
+			msgDiv.innerHTML += "玩家：" + omgData.data[i].name + "<br />";
 			let playerArray = {};
 			playerArray.push(omgData.data[i].name);
 			console.log(playerArray);
@@ -137,7 +139,6 @@ function playerList() {
 	}, 10);
 
 };
-helllo
 
 /*建筑导入页
  *
