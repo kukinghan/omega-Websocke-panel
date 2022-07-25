@@ -37,7 +37,7 @@
 			<div id="omg-link">
 				<h3>&nbsp;&nbsp;&nbsp;omg服务连接状态：
 					<span class="omgLink">
-						<span style="color: orange;">正在尝试与omg通信❥~~~</span>
+						<span style="color: red;">您的浏览器不支持websocket!不推荐使用ie内核浏览器</span>
 					</span>
 					<div id="socker-div">
 						<span>连接地址：</span>
@@ -50,62 +50,93 @@
 
 	<!-- 主页 -->
 			<div class="show" id="list-mian">
-				<H1>hello Omega</H1>
-				<h3>点击左侧功能区开始使用</h3>
-				<br />
-				<h5>依赖Omega旁加载系统运行</h5>
-				<h4>该工具仅支持大屏设备，完善后考虑手机</h4>
-				<h5>显示	服务断开连接 说明本机无运行旁加载组件的Omega，请检查连接地址或重启Omega</h5>
-				<br />
-				<br />
-				<h6>
-					<p>说明：这是一个基于websocket的OMEGA工具</p>
-					<p>现在只有基本通信的功能。想起来就写两行。</p>
-					<br>
-					<p>已知bug：链接地址填奇怪的东西会卡死。请刷新界面</p>
-				</h6>
+				<div class="show-main">
+					<H1>hello Omega~</H1>
+					<h3>点击左侧功能区开始使用</h3>
+					<br />
+					<p>该工具依赖Omega旁加载系统运行</p>
+					<p>该工具仅支持大屏设备，完善后考虑手机</p>
+					<p>显示【服务断开连接】表示本机无运行旁加载组件的Omega，请检查连接地址或重启Omega</p>
+					<p>显示【您的浏览器不支持websocket!】请尝试更换浏览器（不支持IE）</p>
+					<br />
+					<br />
+					<h5>
+						<p>说明：这是一个基于websocket的OMEGA工具</p>
+						<p>概念阶段，持续更新中。当前版本：2022.7.26 v1</p>
+						<br>
+						<br>
+						<p>已知bug：链接地址填奇怪的东西会卡死。请刷新界面</p>
+						<p>小声bb：手机版？等功能基本定型后再适配。想起来就写两行</p>
+					</h5>
+				</div> 
 			</div>
 	<!-- 命令执行 -->
 			<div class="show" id="list-command">
-				<input class="shellInput" id="msg-json" type="text" placeholder="json内容"/>
-				<button class="shellButton" onclick="msgShell()">发送请求（json)</button>
-				<br>
-				<input class="shellInput" id="msg-Websocket" type="text" placeholder="命令如：/say hi" />
-				<button class="shellButton" onclick="msgWebsocket()">以后台身份执行命令</button>
-				<br>
-				<input class="shellInput" id="msg-Player" type="text" placeholder="命令如：/say hi" />
-				<button class="shellButton" onclick="msgPlayer()">以机器人身份执行命令</button>
+				<div class="show-main">
+					<input class="shellInput" id="msg-json" type="text" placeholder="json内容"/>
+					<button class="shellButton" onclick="msgShell()">发送请求（json)</button>
+					<br>
+					<input class="shellInput" id="msg-Websocket" type="text" placeholder="命令如：/say hi" />
+					<button class="shellButton" onclick="msgWebsocket()">以后台身份执行命令</button>
+					<br>
+					<input class="shellInput" id="msg-Player" type="text" placeholder="命令如：/say hi" />
+					<button class="shellButton" onclick="msgPlayer()">以机器人身份执行命令</button>
+				</div>
 			</div>
 	<!-- 世界控制 -->
 			<div class="show" id="list-world">
-				<div>
-					<span>设定游戏时间：</span>	
-					<input onchange="numValueGain()" value="0" type="range" min="0" max="18000" step="" id="timeRange"/>
-					<span id="timeRangeValue" >0</span>
-					<input type="button" value="执行" onclick="msgTimeSet()">
+				<div class="show-main">
+					<div>
+						<span>设定游戏时间：</span>	
+						<input onchange="numValueGain()" value="0" type="range" min="0" max="18000" step="" id="timeRange"/>
+						<span id="timeRangeValue" >0</span>
+						<input class="shellButton" type="button" value="执行" onclick="msgTimeSet()">
+					</div>
+					<div>
+						<span>天气控制：</span>
+						<input class="shellButton" type="button" value="晴天" onclick="">
+						<input class="shellButton" type="button" value="雨天" onclick="">
+						<input class="shellButton" type="button" value="雷雨天" onclick="">
+					</div>
+					<div>
+						<input class="shellButton" type="button" value="清理掉落物">
+					</div>
 				</div>
 			</div>
 	<!-- 玩家控制 -->
 			<div class="show" id="list-player">
-				<span>还没做1</span>
+				<div class="show-main">
+					<span>刷新玩家列表：</span>
+					<input type="button" value="刷新" onclick="playerList()">
+					<div id="player-list">
+						
+					</div>
+				</div>
 			</div>
 	<!-- 建筑导入 -->
 			<div class="show" id="list-input">
-				<span>还没做2</span>
+				<div class="show-main">
+						<span>还没找到方便的接口，计划做一个引导工具</span>
+				</div>
 			</div>
 	<!-- 配置编辑 -->
 			<div class="show" id="list-jsonset">
-				<span>还没做3</span>
+				<div class="show-main">
+					<span>先把界面画好在做</span>
+				</div>
 			</div>
 	<!-- 数据查询 -->
 			<div class="show" id="list-slelect">
-				<span>还没做4</span>
+				<div class="show-main">
+					<span>由于浏览器安全策略限制，计划上传一个json分析成表格</span>
+				</div>
 			</div>
 			
 	<!-- 返回消息 -->
 			<div id="omg-msgDiv">
-				<div>返回消息：</div>
+					<span>&nbsp;&nbsp;返回消息：</span>
 			</div>
+			
 		</div>
 	</body>
 	<script src="js/WebSocket.js"></script>

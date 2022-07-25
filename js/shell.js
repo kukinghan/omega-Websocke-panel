@@ -1,9 +1,16 @@
-let timeVal;
+let timeVal;//设定时间值
+var playerListArray = {};//临时储存的玩家列表
+
 onload = function(){
 	mianSwitch();
-}
+};
 
-// 页面切换（排他法）
+/*
+*
+*	这里是界面逻辑
+*	
+*/
+// 页面切换（排它显示）
 	// 隐藏
 	function showNone(){
 		let obj = document.getElementsByClassName("show");
@@ -44,6 +51,12 @@ onload = function(){
 		showSwitch("list-slelect");
 	}
 
+
+/*命令执行页
+*
+*	这里是命令执行页功能
+*
+*/
 // 发送请求
 	// jsonMsg
 	function msgShell(){
@@ -60,7 +73,15 @@ onload = function(){
 		let msgObj = document.getElementById("msg-Player").value;
 		PlayerMsg(msgObj)
 	};
-	
+
+
+
+/*世界控制页
+*
+*	这里是界面功能
+*
+*/
+
 // 时间显示
 	function numValueGain(){
 		let valNum = document.getElementById("timeRangeValue");
@@ -70,6 +91,50 @@ onload = function(){
 	function msgTimeSet(){
 		WebsocketMsg("/time set "+timeVal)
 	};
+// 天气控制
 
+
+/*玩家控制页
+*
+*	这里是界面功能
+*
+*/
+// 获取玩家列表
+	function playerList(){
+		msg = `{"client":`+(msgID+=1)+`,"function":"get_players_list","args":{}}`
+		shellMsg(msg);
+		setTimeout(function() {
+			for (let i = 0; i < omgData.data.length; i++) {
+				document.getElementById("player-list").innerHTML += "玩家："+omgData.data[i].name+"<br />";
+				let playerArray = {};
+				playerArray.push(omgData.data[i].name);
+				console.log(playerArray);
+			}
+		}, 10);
+		
+	};
+
+
+/*建筑导入页
+*
+*	这里是界面功能
+*
+*/
+
+
+
+/*配置编辑页
+*
+*	这里是界面功能
+*
+*/
+
+
+
+/*数据查询页
+*
+*	这里是界面功能
+*
+*/
 	
 // {"client":1,"violate":false,"data":{"result":{"CommandOrigin":{"Origin":5,"UUID":"342e271e-09b1-11ed-b269-525400b670a0","RequestID":"96045347-a6a3-4114-94c0-1bc4cc561694","PlayerUniqueID":0},"OutputType":4,"SuccessCount":1,"OutputMessages":[],"DataSet":"{\n \"message\" : \"hi\",\n \"statusCode\" : 0\n}\n"}}}

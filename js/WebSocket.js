@@ -1,8 +1,14 @@
-var msg;
+var msg;//传参消息
 var msgID = 0;//请求序号
-var div = document.getElementById("omg-msgDiv");
+var msgDiv = document.getElementById("omg-msgDiv");//右侧返回列表
 window.onload = setSocket();
-var socket;//WebSocket，非必要，待优化
+var socket;//WebSocket，待优化
+var omgData;//omg返回内容
+
+/*
+*	本js负责WebSocket通信
+*	处理返回内容
+*/
 
 // WebSocket连接
 function setSocket(){
@@ -21,23 +27,18 @@ function setSocket(){
 	//接收websocket服务的数据
 	socket.addEventListener('message', function(e) {
 		console.log(e.data);
-		alert(e.data);
 		// 处理数据
 		let jsonMsg = JSON.parse(e.data);
-		div.innerHTML += msgID;
-		for (let val in jsonMsg) {
-			// violate
-			if (val == "violate") {
-				alert(jsonMsg[val])
-				if (jsonMsg[val] == false) {
-					div.innerHTML += "成功";
-				} else{
-					div.innerHTML += "失败";
-				}
-			};
-			
-		};
-		div.innerHTML += "<br />";
+		omgData = jsonMsg;//保存结果
+		msgDiv.innerHTML += "请求"+msgID+"：";
+		
+		if (jsonMsg.violate == false) {
+			msgDiv.innerHTML += "成功";
+		} else{
+			msgDiv.innerHTML += "失败";
+		}
+
+		msgDiv.innerHTML += "<br />";
 		
 	})
 	socket.addEventListener('close', function() {

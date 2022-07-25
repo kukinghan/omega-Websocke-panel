@@ -31,9 +31,9 @@ html{
 	margin: 15px;
 }
 .list-ico-img{
-	width: 50px;
-	height: 50px;
-	margin: 5px;
+	width: 45px;
+	height: 45px;
+	margin: 8px;
 }
 .list-ico-span{
 	color: white;
@@ -63,11 +63,17 @@ html{
 	width: 1000px;
 	height: 660px;
 	margin-left: 3px;
+	overflow: auto;
 	float: left;
 	border: medium none;
 }
+.show-main{
+	margin: 20px 0 0 30px;
+}
 
 /* 主页 */
+
+
 /* 命令执行 */
 #list-command .shellInput{
 	width: 300px;
@@ -76,6 +82,27 @@ html{
 	width: 150px;
 }
 
+/* 世界控制 */
+#list-world .shellButton{
+	width: 85px;
+}
+
+/* 玩家控制 */
+#player-list{
+	width: 600px;
+	height: 600px;
+	border: 2px solid darkgray;
+}
+
+/* 建筑导入 */
+
+
+/* 配置编辑 */
+
+
+/* 数据查询 */
+	
+	
 /* 返回消息 */
 #omg-msgDiv{
 	width: 300px;
