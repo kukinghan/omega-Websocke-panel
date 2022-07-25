@@ -23,7 +23,7 @@
 				</div>
 				<div class="list-ico" onclick="inputSwitch()">
 					<img src="img/Download.png" class="list-ico-img">
-					<span class="list-ico-span">建筑导入	</span>
+					<span class="list-ico-span">建筑导入 </span>
 				</div>
 				<div class="list-ico" onclick="jsonsetSwitch()">
 					<img src="img/Data-Edit.png" class="list-ico-img">
@@ -46,9 +46,9 @@
 						<input type="button" value="保存" onclick="socketClose()">
 					</div>
 				</h3>
-			</div> 
+			</div>
 
-	<!-- 主页 -->
+			<!-- 主页 -->
 			<div class="show" id="list-mian">
 				<div class="show-main">
 					<H1>hello Omega~</H1>
@@ -68,12 +68,13 @@
 						<p>已知bug：链接地址填奇怪的东西会卡死。请刷新界面</p>
 						<p>小声bb：手机版？等功能基本定型后再适配。想起来就写两行</p>
 					</h5>
-				</div> 
+				</div>
 			</div>
-	<!-- 命令执行 -->
+			
+			<!-- 命令执行 -->
 			<div class="show" id="list-command">
 				<div class="show-main">
-					<input class="shellInput" id="msg-json" type="text" placeholder="json内容"/>
+					<input class="shellInput" id="msg-json" type="text" placeholder="json内容" />
 					<button class="shellButton" onclick="msgShell()">发送请求（json)</button>
 					<br>
 					<input class="shellInput" id="msg-Websocket" type="text" placeholder="命令如：/say hi" />
@@ -83,13 +84,15 @@
 					<button class="shellButton" onclick="msgPlayer()">以机器人身份执行命令</button>
 				</div>
 			</div>
-	<!-- 世界控制 -->
+			
+			<!-- 世界控制 -->
 			<div class="show" id="list-world">
 				<div class="show-main">
 					<div>
-						<span>设定游戏时间：</span>	
-						<input onchange="numValueGain()" value="0" type="range" min="0" max="18000" step="" id="timeRange"/>
-						<span id="timeRangeValue" >0</span>
+						<span>设定游戏时间：</span>
+						<input onchange="numValueGain()" value="0" type="range" min="0" max="18000" step=""
+							id="timeRange" />
+						<span id="timeRangeValue">0</span>
 						<input class="shellButton" type="button" value="执行" onclick="msgTimeSet()">
 					</div>
 					<div>
@@ -99,44 +102,48 @@
 						<input class="shellButton" type="button" value="雷雨天" onclick="weatherThunder()">
 					</div>
 					<div>
-						<input class="shellButton" type="button" value="清理掉落物">
+						<input class="shellButton" type="button" value="清理掉落物" onclick="killItems()">
 					</div>
 				</div>
 			</div>
-	<!-- 玩家控制 -->
+			
+			<!-- 玩家控制 -->
 			<div class="show" id="list-player">
 				<div class="show-main">
 					<span>刷新玩家列表：</span>
 					<input type="button" value="刷新" onclick="playerList()">
 					<div id="player-list">
-						
+
 					</div>
 				</div>
 			</div>
-	<!-- 建筑导入 -->
+			
+			<!-- 建筑导入 -->
 			<div class="show" id="list-input">
 				<div class="show-main">
-						<span>还没找到方便的接口，计划做一个引导工具</span>
+					<span>还没找到方便的接口，计划做一个引导工具</span>
 				</div>
 			</div>
-	<!-- 配置编辑 -->
+			
+			<!-- 配置编辑 -->
 			<div class="show" id="list-jsonset">
 				<div class="show-main">
 					<span>先把界面画好在做</span>
 				</div>
 			</div>
-	<!-- 数据查询 -->
+			
+			<!-- 数据查询 -->
 			<div class="show" id="list-slelect">
 				<div class="show-main">
 					<span>由于浏览器安全策略限制，计划上传一个json分析成表格</span>
 				</div>
 			</div>
-			
-	<!-- 返回消息 -->
+
+			<!-- 返回消息 -->
 			<div id="omg-msgDiv">
-					<span>&nbsp;&nbsp;返回消息：</span>
+				<span>&nbsp;&nbsp;返回消息：</span>
 			</div>
-			
+
 		</div>
 	</body>
 	<script src="js/WebSocket.js"></script>

@@ -1,9 +1,14 @@
-*{padding: 0;margin: 0;}
-html{
-	background:no-repeat linear-gradient(145deg,#dbebfa 0,#dbebfa 15%,#007fbd 15% ,#007fbd 25%,#00334e 25%,#00334e 35% ,#004d73 35%,#004d73 100%);
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	background: no-repeat linear-gradient(145deg, #dbebfa 0, #dbebfa 15%, #007fbd 15%, #007fbd 25%, #00334e 25%, #00334e 35%, #004d73 35%, #004d73 100%);
 	height: 100%;
 }
-#main{
+
+#main {
 	width: 1400px;
 	height: 700px;
 	margin: 2% auto auto auto;
@@ -12,17 +17,19 @@ html{
 	border: 3px solid #004d71;
 	box-shadow: 3px 3px 3px darkgray;
 }
-#list{
+
+#list {
 	width: 90px;
 	height: 702px;
 	background-color: #66ccff;
 	float: left;
 	border-top-left-radius: 13px;
 	border-bottom-left-radius: 13px;
-	box-shadow: 2px 0px  #004d71;
+	box-shadow: 2px 0px #004d71;
 	margin: -1px 0 0 -1px;
 }
-.list-ico{
+
+.list-ico {
 	width: 60px;
 	height: 75px;
 	background-color: #59b3df;
@@ -30,12 +37,14 @@ html{
 	float: left;
 	margin: 15px;
 }
-.list-ico-img{
+
+.list-ico-img {
 	width: 45px;
 	height: 45px;
 	margin: 8px;
 }
-.list-ico-span{
+
+.list-ico-span {
 	color: white;
 	display: block;
 	text-align: center;
@@ -43,23 +52,27 @@ html{
 	position: relative;
 	top: -9px;
 }
-#omg-link{
+
+#omg-link {
 	width: 1309px;
 	height: 40px;
 	float: left;
 	margin: -1px 0 0 2px;
 	background-color: #dbebfa;
 	border-top-right-radius: 13px;
-	box-shadow: 0px 1px  #004d71;
+	box-shadow: 0px 1px #004d71;
 }
-#omg-link h3{
+
+#omg-link h3 {
 	margin-top: 8px;
 }
-#socker-div{
+
+#socker-div {
 	float: right;
 	margin-right: 60px;
 }
-.show{
+
+.show {
 	width: 1000px;
 	height: 660px;
 	margin-left: 3px;
@@ -67,7 +80,8 @@ html{
 	float: left;
 	border: medium none;
 }
-.show-main{
+
+.show-main {
 	margin: 20px 0 0 30px;
 }
 
@@ -75,20 +89,21 @@ html{
 
 
 /* 命令执行 */
-#list-command .shellInput{
+#list-command .shellInput {
 	width: 300px;
 }
-#list-command .shellButton{
+
+#list-command .shellButton {
 	width: 150px;
 }
 
 /* 世界控制 */
-#list-world .shellButton{
+#list-world .shellButton {
 	width: 85px;
 }
 
 /* 玩家控制 */
-#player-list{
+#player-list {
 	width: 600px;
 	height: 600px;
 	border: 2px solid darkgray;
@@ -101,10 +116,10 @@ html{
 
 
 /* 数据查询 */
-	
-	
+
+
 /* 返回消息 */
-#omg-msgDiv{
+#omg-msgDiv {
 	width: 300px;
 	height: 654px;
 	background-color: #d9d9d9;
