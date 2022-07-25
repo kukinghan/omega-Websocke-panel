@@ -89,10 +89,18 @@ onload = function(){
 		valNum.innerHTML = timeVal;
 	};
 	function msgTimeSet(){
-		WebsocketMsg("/time set "+timeVal)
+		WebsocketMsg("/time set "+timeVal);
 	};
 // 天气控制
-
+	function weatherClear(){
+		WebsocketMsg("/weather clear");//晴
+	};
+	function weatherRain(){
+		WebsocketMsg("/weather rain");//雨
+	};
+	function weatherThunder(){
+		WebsocketMsg("/weather thunder");//暴雨
+	};
 
 /*玩家控制页
 *
