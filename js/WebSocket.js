@@ -1,5 +1,5 @@
 var msg;
-var msgID = 0;
+var msgID = 0;//请求序号
 var div = document.getElementById("omg-msgDiv");
 window.onload = setSocket();
 var socket;//WebSocket，非必要，待优化
@@ -20,16 +20,29 @@ function setSocket(){
 	})
 	//接收websocket服务的数据
 	socket.addEventListener('message', function(e) {
-		console.log(e.data)
-		let jsonMsg = JSON.parse(e.data)
-		div.innerHTML += "<br />"
+		console.log(e.data);
+		alert(e.data);
+		// 处理数据
+		let jsonMsg = JSON.parse(e.data);
+		div.innerHTML += msgID;
 		for (let val in jsonMsg) {
-			div.innerHTML +=  jsonMsg[val];
-		}
+			// violate
+			if (val == "violate") {
+				alert(jsonMsg[val])
+				if (jsonMsg[val] == false) {
+					div.innerHTML += "成功";
+				} else{
+					div.innerHTML += "失败";
+				}
+			};
+			
+		};
+		div.innerHTML += "<br />";
+		
 	})
 	socket.addEventListener('close', function() {
 		for (let i = 0; i < classs.length; i++) {
-			classs[i].innerHTML = '<span style="color: red;">服务断开连接</span>'
+			classs[i].innerHTML = '<span style="color: red;">服务断开连接</span>';
 		}
 	})
 }

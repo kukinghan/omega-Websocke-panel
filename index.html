@@ -10,22 +10,28 @@
 		<div id="main">
 			<div id="list">
 				<div class="list-ico" onclick="commandSwitch()">
-					命令执行图标
+					<img src="img/Application.png" class="list-ico-img">
+					<span class="list-ico-span">命令执行</span>
 				</div>
 				<div class="list-ico" onclick="worldSwitch()">
-					世界控制图标
+					<img src="img/Shape.png" class="list-ico-img">
+					<span class="list-ico-span">世界控制</span>
 				</div>
 				<div class="list-ico" onclick="playerSwitch()">
-					玩家控制图标
+					<img src="img/Group.png" class="list-ico-img">
+					<span class="list-ico-span">玩家控制</span>
 				</div>
 				<div class="list-ico" onclick="inputSwitch()">
-					建筑导入图标
+					<img src="img/Download.png" class="list-ico-img">
+					<span class="list-ico-span">建筑导入	</span>
 				</div>
 				<div class="list-ico" onclick="jsonsetSwitch()">
-					配置编辑图标
+					<img src="img/Data-Edit.png" class="list-ico-img">
+					<span class="list-ico-span">配置编辑</span>
 				</div>
 				<div class="list-ico" onclick="inquireSwitch()">
-					数据查询
+					<img src="img/Data-Find.png" class="list-ico-img">
+					<span class="list-ico-span">数据查询</span>
 				</div>
 			</div>
 			<div id="omg-link">
@@ -48,14 +54,15 @@
 				<h3>点击左侧功能区开始使用</h3>
 				<br />
 				<h5>依赖Omega旁加载系统运行</h5>
+				<h4>该工具仅支持大屏设备，完善后考虑手机</h4>
 				<h5>显示	服务断开连接 说明本机无运行旁加载组件的Omega，请检查连接地址或重启Omega</h5>
-				<h5>该工具仅支持Windows，完善后考虑移动版</h5>
 				<br />
 				<br />
 				<h6>
 					<p>说明：这是一个基于websocket的OMEGA工具</p>
-					<p>我也不知道该写点什么，意思意思写点什么。</p>
-					<p>现在只有基本通信的功能。想起来就写两行。如果需要的人多再考虑做吧</p>
+					<p>现在只有基本通信的功能。想起来就写两行。</p>
+					<br>
+					<p>已知bug：链接地址填奇怪的东西会卡死。请刷新界面</p>
 				</h6>
 			</div>
 	<!-- 命令执行 -->
@@ -97,7 +104,7 @@
 			
 	<!-- 返回消息 -->
 			<div id="omg-msgDiv">
-				返回消息：
+				<div>返回消息：</div>
 			</div>
 		</div>
 	</body>

@@ -23,11 +23,25 @@ html{
 	margin: -1px 0 0 -1px;
 }
 .list-ico{
+	width: 60px;
+	height: 75px;
+	background-color: #59b3df;
+	border-radius: 13px;
+	float: left;
+	margin: 15px;
+}
+.list-ico-img{
 	width: 50px;
 	height: 50px;
-	background: white;
-	float: left;
-	margin: 20px;
+	margin: 5px;
+}
+.list-ico-span{
+	color: white;
+	display: block;
+	text-align: center;
+	font-size: 8px;
+	position: relative;
+	top: -9px;
 }
 #omg-link{
 	width: 1309px;
@@ -69,4 +83,6 @@ html{
 	background-color: #d9d9d9;
 	border: 4px solid darkgray;
 	float: left;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 13px;
 }
