@@ -68,18 +68,28 @@ function inquireSwitch() {
 // 发送请求
 // jsonMsg
 function msgShell() {
-	msg = document.getElementById("msg-json").value;
+	msg = document.getElementById("command-msg-json").value;
 	shellMsg(msg);
 };
 //WebsocketMsg
 function msgWebsocket() {
-	let msgObj = document.getElementById("msg-Websocket").value;
+	let msgObj = document.getElementById("command-msg-Websocket").value;
 	WebsocketMsg(msgObj)
 };
 //PlayerMsg
 function msgPlayer() {
-	let msgObj = document.getElementById("msg-Player").value;
+	let msgObj = document.getElementById("command-msg-Player").value;
 	PlayerMsg(msgObj)
+};
+//控制台命令
+function msgCmd() {
+	let msgObj = document.getElementById("command-cmd-json").value;
+	cmdMsg(msgObj)
+};
+//群服互通消息
+function msgQq() {
+	let msgObj = document.getElementById("command-qq-json").value;
+	qqMsg(msgObj)
 };
 
 
@@ -125,18 +135,24 @@ function killItems() {
  */
 // 获取玩家列表
 function playerList() {
+	// 获取玩家
 	let msgDiv = document.getElementById("player-list");
+	let playerArray = [];//局部临时玩家列表
 	msgDiv.innerHTML = "";
-	msg = `{"client":` + (msgID += 1) + `,"function":"get_players_list","args":{}}`
+	msg = `{"client":` + (msgID += 1) + `,"function":"get_players_list","args":{}}`;
 	shellMsg(msg);
 	setTimeout(function() {
 		for (let i = 0; i < omgData.data.length; i++) {
 			msgDiv.innerHTML += "玩家：" + omgData.data[i].name + "<br />";
-			let playerArray;
-			console.log(omgData.data[i].name);
+			playerArray.push(omgData.data[i].name);
 		}
 	}, 10);
-
+	playerListArray = playerArray;
+	console.log(playerListArray);
+	// 将玩家写入页面
+	
+	msg = `{"client":` + (msgID += 1) + `,"function":"send_player_cmd","args":{"cmd":"/msg @s @a[]"}}`;
+	shellMsg(msg);
 };
 
 /*建筑导入页

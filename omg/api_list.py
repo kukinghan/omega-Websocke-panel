@@ -198,7 +198,12 @@ def plugin(api:API):
     # 向群服互通的群发送一条消息
     response=api.do_send_qq_msg(msg=f"hello from omega python plugin",cb=None)
     print(response.ack) #True
-    
+	
+
+	# {"client":1,"function":"send_qq_msg","args":{"msg":"123"}}  
+	
+	
+	
     # 执行 fb 命令，等同于在终端输入
     response=api.do_send_fb_cmd("set 0 0 0",cb=None)
     print(response.ack) # True

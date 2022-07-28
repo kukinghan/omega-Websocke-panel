@@ -91,15 +91,80 @@ html {
 /* 命令执行 */
 #list-command .shellInput {
 	width: 300px;
+	height: 35px;
+	padding: 5px 12px;
+	font-size: 10px;
+	color: #595959;
+	border: 1px solid #ccc;
+	border-radius: 4px;
 }
 
 #list-command .shellButton {
 	width: 150px;
+	height: 45px;
+	font-size: 14px;
+	color: white;
+	background-color: #66ccff;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+
+#list-command .shellButton:hover {
+	background-color: #53a7d1;
+}
+#list-command .show-main table tr td{
+	padding: 5px;
+	font-size: 18px;
 }
 
 /* 世界控制 */
+
 #list-world .shellButton {
-	width: 85px;
+	width: 150px;
+	height: 45px;
+	font-size: 14px;
+	color: white;
+	background-color: #66ccff;
+	border-radius: 4px;
+	border: 2px solid #ccc;
+}
+
+#list-world .shellButton:hover {
+	background-color: #53a7d1;
+}
+
+#world-settime span:first-child {
+	display: block;
+	float: left;
+}
+
+#timeRange {
+	display: block;
+	float: left;
+	width: 233px;
+	margin-top: 18px;
+}
+
+#timeRangeValue {
+	display: block;
+	margin-top: 3%;
+	float: left;
+	width: 50px;
+	text-align: center;
+}
+
+#world-settime-input {
+	width: 100px;
+	height: 45px;
+	font-size: 14px;
+	color: white;
+	background-color: #66ccff;
+	border-radius: 4px;
+	border: 2px solid #ccc;
+}
+#list-world .show-main table tr td{
+	padding: 10px;
+	font-size: 18px;
 }
 
 /* 玩家控制 */

@@ -69,6 +69,17 @@ function WebsocketMsg(msgObj) {
 }
 //Player
 function PlayerMsg(msgObj) {
-	msg = `{"client":` + (msgID += 1) + `,"function":"send_player_cmd","args":{"cmd":"` + msgObj + `"}}`
+	msg = 
+	
+	socket.send(msg)
+}
+//控制台命令
+function cmdMsg(msgObj) {
+	msg = `{"client":` + (msgID += 1) + `,"function":"send_fb_cmd","args":{"cmd":"` + msgObj + `"}}`
+	socket.send(msg)
+}
+//群服互通消息
+function qqMsg(msgObj) {
+	msg = `{"client":` + (msgID += 1) + `,"function":"send_qq_msg","args":{"msg":"` + msgObj + `"}}`
 	socket.send(msg)
 }
