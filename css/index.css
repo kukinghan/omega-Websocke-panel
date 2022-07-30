@@ -86,7 +86,9 @@ html {
 }
 
 /* 主页 */
-
+#list-mian .git{
+	text-decoration: none;
+}
 
 /* 命令执行 */
 #list-command .shellInput {
