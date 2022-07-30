@@ -4,12 +4,8 @@
 		<meta charset="utf-8">
 		<title>OMEGA交互测试demo</title>
 		<link rel="stylesheet" href="css/index.css">
-
 	</head>
 	<body>
-
-
-
 		<div id="main">
 			<div id="list">
 				<div class="list-ico" onclick="commandSwitch()">
@@ -65,7 +61,7 @@
 					<br />
 					<h5>
 						<br>说明：这是一个基于websocket的OMEGA工具
-						<br>概念阶段，持续更新中。当前版本：2022.7.26 v1
+						<br>概念阶段，持续更新中。当前版本：2022.7.31 v1
 						<br>
 						<br>
 						<br>已知bug：链接地址填奇怪的东西会卡死。请刷新界面
@@ -111,7 +107,7 @@
 								<input class="shellInput" type="text" id="command-args" placeholder="数据类型:可选" style="width: 80px;"/>
 								<input class="shellInput" type="text" id="command-value" placeholder="数据值：可选" style="width: 80px;"/>
 							</td>
-							<td><button class="shellButton" onclick="">提交</button></td>
+							<td><button class="shellButton" onclick="msgFunction()">提交</button></td>
 						</tr>
 					</table>
 				</div>
@@ -122,9 +118,7 @@
 				<div class="show-main">
 					<table>
 						<tr id="world-settime">
-							<td>
-								<span>设定游戏时间：</span>
-							</td>
+							<td><span>设定游戏时间：</span></td>
 							<td>
 								<input onchange="numValueGain()" value="0" type="range" min="0" max="18000" step=""
 									id="timeRange" />
@@ -133,9 +127,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-								<span>天气控制：</span>
-							</td>
+							<td><span>天气控制：</span></td>
 							<td>
 								<input class="shellButton" type="button" value="晴天" onclick="weatherClear()">
 								<input class="shellButton" type="button" value="雨天" onclick="weatherRain()">
@@ -143,9 +135,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-								<span>清理掉落物：</span>
-							</td>
+							<td><span>清理掉落物：</span></td>
 							<td>
 								<input class="shellButton" type="button" value="清理掉落物" onclick="killItems()">
 							</td>
@@ -162,7 +152,7 @@
 					<table border="" cellspacing="" cellpadding="">
 						<tr>
 							<th>玩家名</th>
-							<th>游戏模式</th>
+							<th>玩家坐标</th>
 						</tr>
 						<tr>
 							<td>Data</td>
@@ -176,7 +166,7 @@
 							var obj = ["玩家1", "玩家2"];
 							for (var i = 0; i < obj.length; i++) {
 								document.getElementById("player-list").innerHTML +=
-									`这里放玩家列表。分配临时id`;
+									`这里放玩家列表。分配临时id<br>`;
 							}
 						};
 					</script>

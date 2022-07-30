@@ -2,16 +2,6 @@
 	"client": 1,
 	"violate": false,
 	"data": {
-		"VERSION": "0.0.3",
-		"ConnectTime": "2022-07-28T01:33:52.8450218+08:00",
-		"WorldName": "world",
-		"BotRandomID": 2204638906062627455,
-		"BotUniqueID": -416611824879,
-		"BotRuntimeID": 110333,
-		"CompressThreshold": 1,
-		"CurrentTick": 21,
-		"WorldGameMode": 0,
-		"WorldDifficulty": 3,
 		"InventorySlot": {
 			"0": {
 				"StackNetworkID": 0,

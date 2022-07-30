@@ -67,9 +67,9 @@ function WebsocketMsg(msgObj) {
 	msg = `{"client":` + (msgID += 1) + `,"function":"send_ws_cmd","args":{"cmd":"` + msgObj + `"}}`
 	socket.send(msg)
 }
-//Player
+//Player命令
 function PlayerMsg(msgObj) {
-	msg = 
+	msg = `{"client":` + (msgID += 1) + `,"function":"send_player_cmd","args":{"cmd":"` + msgObj + `"}}`
 	
 	socket.send(msg)
 }
@@ -81,5 +81,15 @@ function cmdMsg(msgObj) {
 //群服互通消息
 function qqMsg(msgObj) {
 	msg = `{"client":` + (msgID += 1) + `,"function":"send_qq_msg","args":{"msg":"` + msgObj + `"}}`
+	socket.send(msg)
+}
+// 无参函数
+function functionMsg(msgObj){
+	msg = `{"client":` + (msgID += 1) + `,"function":"` + msgObj + `","args":{}}`
+	socket.send(msg)
+}
+// 有参函数
+function functionMsg2(msgObj1,msgObj2,msgObj3){
+	msg = `{"client":` + (msgID += 1) + `,"function":"` + msgObj1 + `","args":{"` + msgObj2 + `":"` + msgObj3 + `"}}`
 	socket.send(msg)
 }

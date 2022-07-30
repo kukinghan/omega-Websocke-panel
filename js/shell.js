@@ -91,6 +91,17 @@ function msgQq() {
 	let msgObj = document.getElementById("command-qq-json").value;
 	qqMsg(msgObj)
 };
+// 执行omg函数
+function msgFunction(){
+	let msg1 = document.getElementById("command-function").value;
+	let msg2 = document.getElementById("command-args").value;
+	let msg3 = document.getElementById("command-value").value;
+	if (msg2 == "" || msg3 == "") {
+		functionMsg(msg1);
+	} else{
+		functionMsg2(msg1,msg2,msg3);
+	}
+}
 
 
 
