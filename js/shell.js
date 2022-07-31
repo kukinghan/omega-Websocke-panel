@@ -150,15 +150,16 @@ function worldInfo() {
 	let showcoordinates  = document.getElementById("world-showcoordinates");//坐标显示
 	let doweathercycle = document.getElementById("world-doweathercycle");//天气更替
 	let pvp = document.getElementById("world-pvp");//玩家伤害
-	// let  = document.getElementById("world-");//火焰蔓延
-	// let  = document.getElementById("world-");//TNT爆炸
-	// let  = document.getElementById("world-");//重生锚爆炸
-	// let  = document.getElementById("world-");//死亡掉落
-	// let  = document.getElementById("world-");//生物破坏
+	let doimmediaterespawn = document.getElementById("world-doimmediaterespawn");//立即重生
+	let dofiretick = document.getElementById("world-dofiretick");//火焰蔓延
+	let tntexplodes = document.getElementById("world-tntexplodes");//TNT爆炸
+	let respawnblocksexplode = document.getElementById("world-respawnblocksexplode");//重生锚爆炸
+	let keepinventory = document.getElementById("world-keepinventory");//死亡掉落
+	let mobgriefing = document.getElementById("world-mobgriefing");//生物破坏
 	msg = `{"client":` + (msgID += 1) + `,"function":"get_uqholder","args":{}}`;
 	shellMsg(msg);
 	setTimeout(function() {
-		omgMsgTime.innerHTML = omgData.data.data.ConnectTime;
+		omgMsgTime.innerHTML = omgData.data.ConnectTime;
 
 		switch (omgData.data.WorldGameMode) {
 			case 0:
@@ -196,8 +197,14 @@ function worldInfo() {
 		SpawnPosition.innerHTML = omgData.data.OnConnectWoldSpawnPosition;
 		CommandsEnabled.innerHTML = omgData.data.CommandsEnabled;
 		showcoordinates.innerHTML = omgData.data.GameRules.showcoordinates.Value;
-		doweathercycle.innerHTML = omgData.data.doweathercycle.Value;
-		pvp.innerHTML = omgData.data.pvp.Value;
+		doweathercycle.innerHTML = omgData.data.GameRules.doweathercycle.Value;
+		pvp.innerHTML = omgData.data.GameRules.pvp.Value;
+		doimmediaterespawn.innerHTML = omgData.data.GameRules.doimmediaterespawn.Value;
+		dofiretick.innerHTML = omgData.data.GameRules.dofiretick.Value;
+		tntexplodes.innerHTML = omgData.data.GameRules.tntexplodes.Value;
+		respawnblocksexplode.innerHTML = omgData.data.GameRules.respawnblocksexplode.Value;
+		keepinventory.innerHTML = omgData.data.GameRules.keepinventory.Value;
+		mobgriefing.innerHTML = omgData.data.GameRules.mobgriefing.Value;
 	}, 100);
 }
 
@@ -212,8 +219,7 @@ function playerList() {
 	let msgDiv = document.getElementById("player-list");
 	let playerArray = []; //局部临时玩家列表
 	msgDiv.innerHTML = "";
-	msg = `{"client":` + (msgID += 1) + `,"function":"get_players_list","args":{}}`;
-	shellMsg(msg);
+	functionMsg("get_players_list");
 	setTimeout(function() {
 		for (let i = 0; i < omgData.data.length; i++) {
 			msgDiv.innerHTML += "玩家：" + omgData.data[i].name + "<br />";
@@ -223,9 +229,7 @@ function playerList() {
 	playerListArray = playerArray;
 	console.log(playerListArray);
 	// 将玩家写入页面
-
-	msg = `{"client":` + (msgID += 1) + `,"function":"send_player_cmd","args":{"cmd":"/msg @s @a[]"}}`;
-	shellMsg(msg);
+	functionMsg2("send_player_cmd","cmd","/msg @s @a[]");
 };
 
 /*建筑导入页

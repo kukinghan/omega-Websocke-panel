@@ -139,7 +139,6 @@ html {
 #list-world .shellButton:hover {
 	background-color: #53a7d1;
 }
-
 #world-settime span:first-child {
 	display: block;
 	float: left;
@@ -174,6 +173,11 @@ html {
 #list-world .show-main table tr td {
 	padding: 10px;
 	font-size: 18px;
+}
+#world-info tr,#world-info th{
+	padding: 8px;
+	width: 100px;
+	text-align: center;
 }
 
 /* 玩家控制 */
