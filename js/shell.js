@@ -92,14 +92,14 @@ function msgQq() {
 	qqMsg(msgObj)
 };
 // 执行omg函数
-function msgFunction(){
+function msgFunction() {
 	let msg1 = document.getElementById("command-function").value;
 	let msg2 = document.getElementById("command-args").value;
 	let msg3 = document.getElementById("command-value").value;
 	if (msg2 == "" || msg3 == "") {
 		functionMsg(msg1);
-	} else{
-		functionMsg2(msg1,msg2,msg3);
+	} else {
+		functionMsg2(msg1, msg2, msg3);
 	}
 }
 
@@ -113,8 +113,8 @@ function msgFunction(){
 
 // 时间显示
 function numValueGain() {
-	let valNum = document.getElementById("timeRangeValue");
-	timeVal = document.getElementById("timeRange").value;
+	let valNum = document.getElementById("world-timeRangeValue");
+	timeVal = document.getElementById("world-timeRange").value;
 	valNum.innerHTML = timeVal;
 };
 
@@ -139,6 +139,69 @@ function weatherThunder() {
 function killItems() {
 	WebsocketMsg("/kill @e[type=item]");
 };
+//获取世界信息
+function worldInfo() {
+	let omgObj = omgData.data;
+	let omgMsgTime = document.getElementById("world-omgMsgTime");//数据更新时间
+	let GameMode = document.getElementById("world-GameMode");//游戏模式
+	let Difficulty = document.getElementById("world-Difficulty");//游戏难度
+	let DayTime = document.getElementById("world-DayTime");//游戏时间
+	let SpawnPosition = document.getElementById("world-SpawnPosition");//世界出生点
+	let CommandsEnabled = document.getElementById("world-CommandsEnabled");//命令状态
+	let showcoordinates  = document.getElementById("world-showcoordinates");//坐标显示
+	let doweathercycle = document.getElementById("world-doweathercycle");//天气更替
+	let pvp = document.getElementById("world-pvp");//玩家伤害
+	// let  = document.getElementById("world-CommandsEnabled");//火焰蔓延
+	// let  = document.getElementById("world-CommandsEnabled");//TNT爆炸
+	// let  = document.getElementById("world-CommandsEnabled");//重生锚爆炸
+	// let  = document.getElementById("world-CommandsEnabled");//死亡掉落
+	// let  = document.getElementById("world-CommandsEnabled");//生物破坏
+	msg = `{"client":` + (msgID += 1) + `,"function":"get_uqholder","args":{}}`;
+	shellMsg(msg);
+	setTimeout(function() {
+		omgMsgTime.innerHTML = omgData.data.ConnectTime;
+
+		switch (omgObj.WorldGameMode) {
+			case 0:
+				GameMode.innerHTML = "生存";
+				break;
+			case 1:
+				GameMode.innerHTML = "创造";
+				break;
+			case 2:
+				GameMode.innerHTML = "冒险";
+				break;
+			default:
+				GameMode.innerHTML = "获取失败";
+				break;
+		};
+
+		switch (omgObj.WorldDifficulty) {
+			case 0:
+				Difficulty.innerHTML = "和平";
+				break;
+			case 1:
+				Difficulty.innerHTML = "简单";
+				break;
+			case 2:
+				Difficulty.innerHTML = "普通";
+				break;
+			case 3:
+				Difficulty.innerHTML = "困难";
+				break;
+			default:
+				Difficulty.innerHTML = "获取失败";
+				break;
+		}
+		DayTime.innerHTML  = Math.trunc(omgObj.DayTimePercent*24)+"点";
+		SpawnPosition.innerHTML = omgObj.OnConnectWoldSpawnPosition;
+		CommandsEnabled.innerHTML = omgObj.CommandsEnabled;
+		showcoordinates.innerHTML = omgObj.GameRules.showcoordinates.Value;
+		doweathercycle.innerHTML = omgObj.doweathercycle.Value;
+		pvp.innerHTML = omgObj.pvp.Value;
+	}, 100);
+}
+
 /*玩家控制页
  *
  *	这里是界面功能
@@ -148,7 +211,7 @@ function killItems() {
 function playerList() {
 	// 获取玩家
 	let msgDiv = document.getElementById("player-list");
-	let playerArray = [];//局部临时玩家列表
+	let playerArray = []; //局部临时玩家列表
 	msgDiv.innerHTML = "";
 	msg = `{"client":` + (msgID += 1) + `,"function":"get_players_list","args":{}}`;
 	shellMsg(msg);
@@ -161,7 +224,7 @@ function playerList() {
 	playerListArray = playerArray;
 	console.log(playerListArray);
 	// 将玩家写入页面
-	
+
 	msg = `{"client":` + (msgID += 1) + `,"function":"send_player_cmd","args":{"cmd":"/msg @s @a[]"}}`;
 	shellMsg(msg);
 };

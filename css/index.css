@@ -38,6 +38,10 @@ html {
 	margin: 15px;
 }
 
+.list-ico:hover {
+	background-color: #4c9bbf;
+}
+
 .list-ico-img {
 	width: 45px;
 	height: 45px;
@@ -86,7 +90,7 @@ html {
 }
 
 /* 主页 */
-#list-mian .git{
+#list-mian .git {
 	text-decoration: none;
 }
 
@@ -114,7 +118,8 @@ html {
 #list-command .shellButton:hover {
 	background-color: #53a7d1;
 }
-#list-command .show-main table tr td{
+
+#list-command .show-main table tr td {
 	padding: 5px;
 	font-size: 18px;
 }
@@ -140,14 +145,14 @@ html {
 	float: left;
 }
 
-#timeRange {
+#world-timeRange {
 	display: block;
 	float: left;
 	width: 233px;
 	margin-top: 18px;
 }
 
-#timeRangeValue {
+#world-timeRangeValue {
 	display: block;
 	margin-top: 3%;
 	float: left;
@@ -165,7 +170,8 @@ html {
 	border-radius: 4px;
 	border: 2px solid #ccc;
 }
-#list-world .show-main table tr td{
+
+#list-world .show-main table tr td {
 	padding: 10px;
 	font-size: 18px;
 }
@@ -195,4 +201,5 @@ html {
 	float: left;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 13px;
+	overflow: auto;
 }

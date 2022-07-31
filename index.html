@@ -37,13 +37,13 @@
 			<div id="omg-link">
 				<h3>&nbsp;&nbsp;&nbsp;omg服务连接状态：
 					<span class="omgLink">
-						<span style="color: red;">您的浏览器不支持websocket!不推荐使用ie内核浏览器</span>
+						<span style="color: red;">websocket!连接失败！请查看下方解决方案</span>
 					</span>
 					<div id="socker-div">
 						<span>连接地址：</span>
 						<input type="text" id="socket" value="127.0.0.1:24011">
 						<!-- <span>:</span><input type="text" id="socket2"> -->
-						<input type="button" value="保存" onclick="socketClose()">
+						<input type="button" value="连接" onclick="socketClose()">
 					</div>
 				</h3>
 			</div>
@@ -55,10 +55,17 @@
 					<h3>点击左侧功能区开始使用</h3>
 					<br />
 					<p>该工具依赖Omega旁加载系统运行</p>
-					<p>该工具仅支持大屏设备，完善后考虑手机</p>
-					<p>显示【服务断开连接】表示本机无运行旁加载组件的Omega，请检查连接地址或重启Omega</p>
-					<p>显示【您的浏览器不支持websocket!】请尝试更换浏览器（不支持IE）</p>
-					<br />
+					<p>该工具当前仅支持大屏设备，完善后将会适配移动终端</p>
+					<h3>常见问题：</h3>
+					<p>●提示：<span style="color: red;">服务断开连接</span>
+						<br />表示本机无运行旁加载组件的Omega，请重启Omega或检查连接地址
+						<br />！确保：组件-OmegaSide旁加载组件系统 启用（可选开启仅调试模式）
+						<br />●提示：<span style="color: red;">websocket!连接失败！</span>
+						<br />PC端请尝试更换浏览器（不支持IE）
+						<br />移动端请将文件夹完整的移动到公共目录（如：omg文件夹）
+						<br />●错误：页面显示异常：
+						<br />您的浏览器安全策略较为特殊，请尝试更换设备
+					</p>
 					<br />
 					<h5>
 						<br>说明：这是一个基于websocket的OMEGA工具
@@ -66,10 +73,9 @@
 						<br>
 						<br>
 						<br>已知bug：链接地址填奇怪的东西会卡死。请刷新界面
-						<br>小声：手机版等功能基本定型后再适配。想起来就写两行
 						<br>开源代码：
-							<a href="https://gitee.com/kukinghan/omega-Websocke-panel" class="git">Gitee</a>
-							<a href="https://github.com/kukinghan/omega-Websocke-panel" class="git">Github</a>
+						<a href="https://gitee.com/kukinghan/omega-Websocke-panel" class="git">Gitee</a>
+						<a href="https://github.com/kukinghan/omega-Websocke-panel" class="git">Github</a>
 					</h5>
 				</div>
 			</div>
@@ -80,13 +86,15 @@
 					<table>
 						<tr>
 							<td class="text">以后台身份执行命令：</td>
-							<td><input class="shellInput" id="command-msg-Websocket" type="text" placeholder="命令如：/say hi" />
+							<td><input class="shellInput" id="command-msg-Websocket" type="text"
+									placeholder="命令如：/say hi" />
 							</td>
 							<td><button class="shellButton" onclick="msgWebsocket()">提交</button></td>
 						</tr>
 						<tr>
 							<td class="text">以机器人身份执行命令：</td>
-							<td><input class="shellInput" id="command-msg-Player" type="text" placeholder="命令如：/say hi" /></td>
+							<td><input class="shellInput" id="command-msg-Player" type="text"
+									placeholder="命令如：/say hi" /></td>
 							<td><button class="shellButton" onclick="msgPlayer()">提交</button></td>
 						</tr>
 						<tr>
@@ -107,9 +115,12 @@
 						<tr>
 							<td class="text">执行Omega函数：</td>
 							<td>
-								<input class="shellInput" type="text" id="command-function" placeholder="函数：必填" style="width: 80px;"/>
-								<input class="shellInput" type="text" id="command-args" placeholder="数据类型:可选" style="width: 80px;"/>
-								<input class="shellInput" type="text" id="command-value" placeholder="数据值：可选" style="width: 80px;"/>
+								<input class="shellInput" type="text" id="command-function" placeholder="函数：必填"
+									style="width: 80px;" />
+								<input class="shellInput" type="text" id="command-args" placeholder="数据类型:可选"
+									style="width: 80px;" />
+								<input class="shellInput" type="text" id="command-value" placeholder="数据值：可选"
+									style="width: 80px;" />
 							</td>
 							<td><button class="shellButton" onclick="msgFunction()">提交</button></td>
 						</tr>
@@ -122,11 +133,11 @@
 				<div class="show-main">
 					<table>
 						<tr id="world-settime">
-							<td><span>设定游戏时间：</span></td>
+							<td><span>游戏时间：</span></td>
 							<td>
 								<input onchange="numValueGain()" value="0" type="range" min="0" max="18000" step=""
-									id="timeRange" />
-								<span id="timeRangeValue">0</span>
+									id="world-timeRange" />
+								<span id="world-timeRangeValue">0</span>
 								<input id="world-settime-input" type="button" value="执行" onclick="msgTimeSet()">
 							</td>
 						</tr>
@@ -139,30 +150,84 @@
 							</td>
 						</tr>
 						<tr>
-							<td><span>清理掉落物：</span></td>
-							<td>
-								<input class="shellButton" type="button" value="清理掉落物" onclick="killItems()">
+							<td colspan="3">
+								<span>清理掉落物：</span>
+								<input class="shellButton" type="button" value="执行" onclick="killItems()">
+								<span>重启服务器：</span>
+								<input class="shellButton" type="button" value="没做" onclick="">
 							</td>
+						</tr>
+					</table>
+					<br />
+					<hr width="900px" />
+					<br />
+					<span>获取世界信息</span>
+					<input class="shellButton" type="button" value="刷新" onclick="worldInfo()"
+						style="width: 50px;height: 40px;">
+					<span>数据更新时间：</span>
+					<span id="world-omgMsgTime">未获取数据</span>
+					<table>
+						<tr>
+							<th>游戏模式</th>
+							<th>游戏难度</th>
+							<th>游戏时间</th>
+							<th>世界出生点</th>
+							<th>命令启用</th>
+							<th>坐标显示</th>
+							<th>天气更替</th>
+						</tr>
+						<tr>
+							<td id="world-GameMode">空数据</td>
+							<td id="world-Difficulty">空数据</td>
+							<td id="world-DayTime">空数据</td>
+							<td id="world-SpawnPosition">空数据</td>
+							<td id="world-CommandsEnabled">空数据</td>
+							<td id="world-showcoordinates">空数据</td>
+							<td id="world-doweathercycle">空数据</td>
+						</tr>
+						<tr>
+							<th>玩家伤害</th>
+							<th>立即重生</th>
+							<th>火焰蔓延</th>
+							<th>TNT爆炸</th>
+							<th>重生锚爆炸</th>
+							<th>死亡掉落</th>
+							<th>生物破坏</th>
+						</tr>
+						<tr>
+							<td id="world-">没做</td>
+							<td id="world-">没做</td>
+							<td id="world-">没做</td>
+							<td id="world-">没做</td>
+							<td id="world-">没做</td>
+							<td id="world-">没做</td>
+							<td id="world-">没做</td>
 						</tr>
 					</table>
 				</div>
 			</div>
-
 			<!-- 玩家控制 -->
 			<div class="show" id="list-player">
 				<div class="show-main">
 					<span>刷新玩家列表：</span>
 					<input type="button" value="刷新" onclick="playerList()">
+					<span>数据更新时间：</span>
 					<table border="" cellspacing="" cellpadding="">
 						<tr>
-							<th>玩家名</th>
+							<th>玩家名称</th>
 							<th>玩家坐标</th>
+							<th>登录时间</th>
+							<th>登录时常</th>
 						</tr>
 						<tr>
 							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
 						</tr>
 					</table>
-					
+
 					<input type="button" value="调试模式" onclick="testtest()">
 					<script>
 						function testtest() {
