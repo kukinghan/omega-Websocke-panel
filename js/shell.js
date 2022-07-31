@@ -141,7 +141,6 @@ function killItems() {
 };
 //获取世界信息
 function worldInfo() {
-	let omgObj = omgData.data;
 	let omgMsgTime = document.getElementById("world-omgMsgTime");//数据更新时间
 	let GameMode = document.getElementById("world-GameMode");//游戏模式
 	let Difficulty = document.getElementById("world-Difficulty");//游戏难度
@@ -151,17 +150,17 @@ function worldInfo() {
 	let showcoordinates  = document.getElementById("world-showcoordinates");//坐标显示
 	let doweathercycle = document.getElementById("world-doweathercycle");//天气更替
 	let pvp = document.getElementById("world-pvp");//玩家伤害
-	// let  = document.getElementById("world-CommandsEnabled");//火焰蔓延
-	// let  = document.getElementById("world-CommandsEnabled");//TNT爆炸
-	// let  = document.getElementById("world-CommandsEnabled");//重生锚爆炸
-	// let  = document.getElementById("world-CommandsEnabled");//死亡掉落
-	// let  = document.getElementById("world-CommandsEnabled");//生物破坏
+	// let  = document.getElementById("world-");//火焰蔓延
+	// let  = document.getElementById("world-");//TNT爆炸
+	// let  = document.getElementById("world-");//重生锚爆炸
+	// let  = document.getElementById("world-");//死亡掉落
+	// let  = document.getElementById("world-");//生物破坏
 	msg = `{"client":` + (msgID += 1) + `,"function":"get_uqholder","args":{}}`;
 	shellMsg(msg);
 	setTimeout(function() {
-		omgMsgTime.innerHTML = omgData.data.ConnectTime;
+		omgMsgTime.innerHTML = omgData.data.data.ConnectTime;
 
-		switch (omgObj.WorldGameMode) {
+		switch (omgData.data.WorldGameMode) {
 			case 0:
 				GameMode.innerHTML = "生存";
 				break;
@@ -176,7 +175,7 @@ function worldInfo() {
 				break;
 		};
 
-		switch (omgObj.WorldDifficulty) {
+		switch (omgData.data.WorldDifficulty) {
 			case 0:
 				Difficulty.innerHTML = "和平";
 				break;
@@ -193,12 +192,12 @@ function worldInfo() {
 				Difficulty.innerHTML = "获取失败";
 				break;
 		}
-		DayTime.innerHTML  = Math.trunc(omgObj.DayTimePercent*24)+"点";
-		SpawnPosition.innerHTML = omgObj.OnConnectWoldSpawnPosition;
-		CommandsEnabled.innerHTML = omgObj.CommandsEnabled;
-		showcoordinates.innerHTML = omgObj.GameRules.showcoordinates.Value;
-		doweathercycle.innerHTML = omgObj.doweathercycle.Value;
-		pvp.innerHTML = omgObj.pvp.Value;
+		DayTime.innerHTML  = Math.trunc(omgData.data.DayTimePercent*24)+"点";
+		SpawnPosition.innerHTML = omgData.data.OnConnectWoldSpawnPosition;
+		CommandsEnabled.innerHTML = omgData.data.CommandsEnabled;
+		showcoordinates.innerHTML = omgData.data.GameRules.showcoordinates.Value;
+		doweathercycle.innerHTML = omgData.data.doweathercycle.Value;
+		pvp.innerHTML = omgData.data.pvp.Value;
 	}, 100);
 }
 
