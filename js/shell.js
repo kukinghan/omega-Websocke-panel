@@ -14,7 +14,7 @@ onload = function() {
 // 隐藏
 function showNone() {
 	let obj = document.getElementsByClassName("show");
-	for (var i = 0; i < obj.length; i++) {
+	for (let i = 0; i < obj.length; i++) {
 		obj[i].style = "display: none;"
 	};
 };
@@ -141,23 +141,22 @@ function killItems() {
 };
 //获取世界信息
 function worldInfo() {
-	let omgMsgTime = document.getElementById("world-omgMsgTime");//数据更新时间
-	let GameMode = document.getElementById("world-GameMode");//游戏模式
-	let Difficulty = document.getElementById("world-Difficulty");//游戏难度
-	let DayTime = document.getElementById("world-DayTime");//游戏时间
-	let SpawnPosition = document.getElementById("world-SpawnPosition");//世界出生点
-	let CommandsEnabled = document.getElementById("world-CommandsEnabled");//命令状态
-	let showcoordinates  = document.getElementById("world-showcoordinates");//坐标显示
-	let doweathercycle = document.getElementById("world-doweathercycle");//天气更替
-	let pvp = document.getElementById("world-pvp");//玩家伤害
-	let doimmediaterespawn = document.getElementById("world-doimmediaterespawn");//立即重生
-	let dofiretick = document.getElementById("world-dofiretick");//火焰蔓延
-	let tntexplodes = document.getElementById("world-tntexplodes");//TNT爆炸
-	let respawnblocksexplode = document.getElementById("world-respawnblocksexplode");//重生锚爆炸
-	let keepinventory = document.getElementById("world-keepinventory");//死亡掉落
-	let mobgriefing = document.getElementById("world-mobgriefing");//生物破坏
-	msg = `{"client":` + (msgID += 1) + `,"function":"get_uqholder","args":{}}`;
-	shellMsg(msg);
+	let omgMsgTime = document.getElementById("world-omgMsgTime"); //数据更新时间
+	let GameMode = document.getElementById("world-GameMode"); //游戏模式
+	let Difficulty = document.getElementById("world-Difficulty"); //游戏难度
+	let DayTime = document.getElementById("world-DayTime"); //游戏时间
+	let SpawnPosition = document.getElementById("world-SpawnPosition"); //世界出生点
+	let CommandsEnabled = document.getElementById("world-CommandsEnabled"); //命令状态
+	let showcoordinates = document.getElementById("world-showcoordinates"); //坐标显示
+	let doweathercycle = document.getElementById("world-doweathercycle"); //天气更替
+	let pvp = document.getElementById("world-pvp"); //玩家伤害
+	let doimmediaterespawn = document.getElementById("world-doimmediaterespawn"); //立即重生
+	let dofiretick = document.getElementById("world-dofiretick"); //火焰蔓延
+	let tntexplodes = document.getElementById("world-tntexplodes"); //TNT爆炸
+	let respawnblocksexplode = document.getElementById("world-respawnblocksexplode"); //重生锚爆炸
+	let keepinventory = document.getElementById("world-keepinventory"); //死亡掉落
+	let mobgriefing = document.getElementById("world-mobgriefing"); //生物破坏
+	functionMsg("get_uqholder");
 	setTimeout(function() {
 		omgMsgTime.innerHTML = omgData.data.ConnectTime;
 
@@ -175,7 +174,6 @@ function worldInfo() {
 				GameMode.innerHTML = "获取失败";
 				break;
 		};
-
 		switch (omgData.data.WorldDifficulty) {
 			case 0:
 				Difficulty.innerHTML = "和平";
@@ -193,7 +191,7 @@ function worldInfo() {
 				Difficulty.innerHTML = "获取失败";
 				break;
 		}
-		DayTime.innerHTML  = Math.trunc(omgData.data.DayTimePercent*24)+"点";
+		DayTime.innerHTML = Math.trunc(omgData.data.DayTimePercent * 24) + "点";
 		SpawnPosition.innerHTML = omgData.data.OnConnectWoldSpawnPosition;
 		CommandsEnabled.innerHTML = omgData.data.CommandsEnabled;
 		showcoordinates.innerHTML = omgData.data.GameRules.showcoordinates.Value;
@@ -229,7 +227,7 @@ function playerList() {
 	playerListArray = playerArray;
 	console.log(playerListArray);
 	// 将玩家写入页面
-	functionMsg2("send_player_cmd","cmd","/msg @s @a[]");
+	functionMsg2("send_player_cmd", "cmd", "/msg @s @a[]");
 };
 
 /*建筑导入页

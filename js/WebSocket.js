@@ -1,9 +1,9 @@
 var msg; //传参消息
 var msgID = 0; //请求序号
-var msgDiv = document.getElementById("omg-msgDiv"); //右侧返回列表
-window.onload = setSocket();
-var socket; //WebSocket，待优化
+var msgDiv = document.getElementById("omg-msgDiv"); //右返回列表
+var socket; //WebSocket
 var omgData; //omg返回内容
+window.onload = setSocket();
 
 /*
  *	本js负责WebSocket通信
@@ -70,7 +70,7 @@ function WebsocketMsg(msgObj) {
 //Player命令
 function PlayerMsg(msgObj) {
 	msg = `{"client":` + (msgID += 1) + `,"function":"send_player_cmd","args":{"cmd":"` + msgObj + `"}}`
-	
+
 	socket.send(msg)
 }
 //控制台命令
@@ -84,12 +84,12 @@ function qqMsg(msgObj) {
 	socket.send(msg)
 }
 // 无参函数
-function functionMsg(msgObj){
+function functionMsg(msgObj) {
 	msg = `{"client":` + (msgID += 1) + `,"function":"` + msgObj + `","args":{}}`
 	socket.send(msg)
 }
 // 有参函数
-function functionMsg2(msgObj1,msgObj2,msgObj3){
+function functionMsg2(msgObj1, msgObj2, msgObj3) {
 	msg = `{"client":` + (msgID += 1) + `,"function":"` + msgObj1 + `","args":{"` + msgObj2 + `":"` + msgObj3 + `"}}`
 	socket.send(msg)
 }
