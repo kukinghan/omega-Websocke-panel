@@ -176,33 +176,33 @@ function worldInfo() {
 		};
 		switch (omgData.data.WorldDifficulty) {
 			case 0:
-				Difficulty.innerHTML = "和平";
+				Difficulty.value = "peaceful";
 				break;
 			case 1:
-				Difficulty.innerHTML = "简单";
+				Difficulty.value = "easy";
 				break;
 			case 2:
-				Difficulty.innerHTML = "普通";
+				Difficulty.value = "normal";
 				break;
 			case 3:
-				Difficulty.innerHTML = "困难";
+				Difficulty.value = "hard";
 				break;
 			default:
-				Difficulty.innerHTML = "获取失败";
+				Difficulty.value = "获取失败";
 				break;
 		}
 		DayTime.innerHTML = Math.trunc(omgData.data.DayTimePercent * 24) + "点";
 		SpawnPosition.innerHTML = omgData.data.OnConnectWoldSpawnPosition;
-		CommandsEnabled.innerHTML = omgData.data.CommandsEnabled;
-		showcoordinates.innerHTML = omgData.data.GameRules.showcoordinates.Value;
-		doweathercycle.innerHTML = omgData.data.GameRules.doweathercycle.Value;
-		pvp.innerHTML = omgData.data.GameRules.pvp.Value;
-		doimmediaterespawn.innerHTML = omgData.data.GameRules.doimmediaterespawn.Value;
-		dofiretick.innerHTML = omgData.data.GameRules.dofiretick.Value;
-		tntexplodes.innerHTML = omgData.data.GameRules.tntexplodes.Value;
-		respawnblocksexplode.innerHTML = omgData.data.GameRules.respawnblocksexplode.Value;
-		keepinventory.innerHTML = omgData.data.GameRules.keepinventory.Value;
-		mobgriefing.innerHTML = omgData.data.GameRules.mobgriefing.Value;
+		CommandsEnabled.value = omgData.data.CommandsEnabled;
+		showcoordinates.value = omgData.data.GameRules.showcoordinates.Value;
+		doweathercycle.value = omgData.data.GameRules.doweathercycle.Value;
+		pvp.value = omgData.data.GameRules.pvp.Value;
+		doimmediaterespawn.value = omgData.data.GameRules.doimmediaterespawn.Value;
+		dofiretick.value = omgData.data.GameRules.dofiretick.Value;
+		tntexplodes.value = omgData.data.GameRules.tntexplodes.Value;
+		respawnblocksexplode.value = omgData.data.GameRules.respawnblocksexplode.Value;
+		keepinventory.value = omgData.data.GameRules.keepinventory.Value;
+		mobgriefing.value = omgData.data.GameRules.mobgriefing.Value;
 	}, 100);
 }
 
@@ -227,7 +227,6 @@ function playerList() {
 	playerListArray = playerArray;
 	console.log(playerListArray);
 	// 将玩家写入页面
-	functionMsg2("send_player_cmd", "cmd", "/msg @s @a[]");
 };
 
 /*建筑导入页
@@ -252,4 +251,28 @@ function playerList() {
  *
  */
 
-// {"client":1,"violate":false,"data":{"result":{"CommandOrigin":{"Origin":5,"UUID":"342e271e-09b1-11ed-b269-525400b670a0","RequestID":"96045347-a6a3-4114-94c0-1bc4cc561694","PlayerUniqueID":0},"OutputType":4,"SuccessCount":1,"OutputMessages":[],"DataSet":"{\n \"message\" : \"hi\",\n \"statusCode\" : 0\n}\n"}}}
+
+/*工具函数
+ *
+ *	这里是封装好的工具
+ *
+ */
+
+// function tozhcn(obj){
+// 	if (obj == true) {
+// 		return "是";
+// 	} else if(obj == false){
+// 		return "否";
+// 	}
+// 	return "获取失败";
+// }
+
+//修改游戏难度
+function difficulty(value){
+	WebsocketMsg("/difficulty "+value);
+}
+
+//修改游戏规则
+function gamerule(value){
+	WebsocketMsg("/gamerule " + value);
+}

@@ -176,9 +176,14 @@ html {
 	font-size: 18px;
 }
 
-#world-info tr,#world-info th {
-	padding: 8px;
+#world-info tr,#world-info th,#world-info td select{
+	padding: 7px;
 	width: 100px;
+	text-align: center;
+	font-size: 15px;
+}
+#world-info td select option{
+	font-size: 15px;
 	text-align: center;
 }
 

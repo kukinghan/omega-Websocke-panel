@@ -150,8 +150,6 @@
 							<td colspan="3">
 								<span>清理掉落物：</span>
 								<input class="shellButton" type="button" value="执行" onclick="killItems()">
-								<span>重启服务器：</span>
-								<input class="shellButton" type="button" value="没做" onclick="">
 							</td>
 						</tr>
 					</table>
@@ -174,13 +172,39 @@
 							<th>天气更替</th>
 						</tr>
 						<tr>
-							<td id="world-GameMode">空数据</td>
-							<td id="world-Difficulty">空数据</td>
-							<td id="world-DayTime">空数据</td>
-							<td id="world-SpawnPosition">空数据</td>
-							<td id="world-CommandsEnabled">空数据</td>
-							<td id="world-showcoordinates">空数据</td>
-							<td id="world-doweathercycle">空数据</td>
+							<td id="world-GameMode">未获取</td>
+							<td>
+								<select id="world-Difficulty" onchange="difficulty(this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="peaceful">和平</option>
+									<option value="easy">简单</option>
+									<option value="normal">普通</option>
+									<option value="hard">困难</option>
+								</select>
+							</td>
+							<td id="world-DayTime">未获取</td>
+							<td id="world-SpawnPosition">未获取</td>
+							<td>
+								<select id="world-CommandsEnabled" onchange="gamerule('commandsEnabled '+this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
+							<td>
+								<select id="world-showcoordinates" onchange="gamerule('showcoordinates '+this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
+							<td>
+								<select id="world-doweathercycle" onchange="gamerule('doweathercycle '+this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<th>玩家伤害</th>
@@ -192,13 +216,55 @@
 							<th>生物破坏</th>
 						</tr>
 						<tr>
-							<td id="world-pvp">空数据</td>
-							<td id="world-doimmediaterespawn">空数据</td>
-							<td id="world-dofiretick">空数据</td>
-							<td id="world-tntexplodes">空数据</td>
-							<td id="world-respawnblocksexplode">空数据</td>
-							<td id="world-keepinventory">空数据</td>
-							<td id="world-mobgriefing">空数据</td>
+							<td>
+								<select id="world-pvp" onchange="gamerule('pvp '+this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
+							<td>
+								<select id="world-doimmediaterespawn" onchange="gamerule('doimmediaterespawn '+this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
+							<td>
+								<select id="world-dofiretick" onchange="gamerule('dofiretick '+this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
+							<td>
+								<select id="world-tntexplodes" onchange="gamerule('tntexplodes '+this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
+							<td>
+								<select id="world-respawnblocksexplode" onchange="gamerule('respawnblocksexplode '+this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
+							<td>
+								<select id="world-keepinventory" onchange="gamerule('keepinventory '+this.value); ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
+							<td>
+								<select id="world-mobgriefing" onchange="gamerule('mobgriefing '+this.value);console.log('mobgriefing '+this.value) ">
+									<option style="display: none;">未获取</option>
+									<option value="true">是</option>
+									<option value="false">否</option>
+								</select>
+							</td>
 						</tr>
 					</table>
 				</div>
