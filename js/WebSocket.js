@@ -70,7 +70,6 @@ function WebsocketMsg(msgObj) {
 //Player命令
 function PlayerMsg(msgObj) {
 	msg = `{"client":` + (msgID += 1) + `,"function":"send_player_cmd","args":{"cmd":"` + msgObj + `"}}`
-
 	socket.send(msg)
 }
 //控制台命令

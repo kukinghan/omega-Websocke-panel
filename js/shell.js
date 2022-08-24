@@ -1,7 +1,7 @@
 let timeVal; //设定时间值
 var playerListArray = {}; //临时储存的玩家列表
 onload = function() {
-	mianSwitch();
+	classSwitch("list-mian");
 };
 
 
@@ -19,45 +19,11 @@ function showNone() {
 	};
 };
 
-// 显示
-function showSwitch(obj) {
+// 显示切换
+function classSwitch(obj){
+	showNone();
 	document.getElementById(obj).style = "display: inline";
-};
-
-function mianSwitch() {
-	showNone();
-	showSwitch("list-mian");
-};
-
-function commandSwitch() {
-	showNone();
-	showSwitch("list-command");
-};
-
-function worldSwitch() {
-	showNone();
-	showSwitch("list-world");
-};
-
-function playerSwitch() {
-	showNone();
-	showSwitch("list-player");
-};
-
-function inputSwitch() {
-	showNone();
-	showSwitch("list-input");
-};
-
-function jsonsetSwitch() {
-	showNone();
-	showSwitch("list-jsonset");
-};
-
-function inquireSwitch() {
-	showNone();
-	showSwitch("list-slelect");
-};
+}
 
 
 /*命令执行页
