@@ -54,15 +54,13 @@
 					<H1>hello Omega~</H1>
 					<h3>点击左侧功能区开始使用</h3>
 					<br />
-					<p>该工具依赖Omega旁加载系统运行</p>
-					<p>该工具当前仅支持大屏设备，完善后将会适配移动终端</p>
+					<p>该工具依赖Omega旁加载系统运行，当前仅支持大屏设备</p>
 					<h3>常见问题：</h3>
 					<p>●提示：<span style="color: red;">服务断开连接</span>
 						<br />表示本机无运行旁加载组件的Omega，请重启Omega或检查连接地址
 						<br />！确保：组件-OmegaSide旁加载组件系统 启用（可选开启仅调试模式）
 						<br />●提示：<span style="color: red;">websocket!连接失败！</span>
-						<br />PC端请尝试更换浏览器（不支持IE）
-						<br />移动端请将文件夹完整的移动到公共目录（如：omg文件夹）
+						<br />PC端请尝试更换浏览器（不支持IE，不支持移动设备）
 						<br />●错误：页面显示异常：
 						<br />您的浏览器安全策略较为特殊，请尝试更换设备
 					</p>
@@ -91,7 +89,7 @@
 						<tr>
 							<td class="text">以机器人身份执行命令：</td>
 							<td><input class="shellInput" id="command-msg-Player" type="text"
-									placeholder="命令如：/say hi" /></td>
+									placeholder="命令如：/msg @s hi ""/></td>
 							<td><button class="shellButton" onclick="msgPlayer()">提交</button></td>
 						</tr>
 						<tr>
@@ -184,13 +182,7 @@
 							</td>
 							<td id="world-DayTime">未获取</td>
 							<td id="world-SpawnPosition">未获取</td>
-							<td>
-								<select id="world-CommandsEnabled" onchange="gamerule('commandsEnabled '+this.value); ">
-									<option style="display: none;">未获取</option>
-									<option value="true">是</option>
-									<option value="false">否</option>
-								</select>
-							</td>
+							<td id="world-CommandsEnabled">未获取</td>
 							<td>
 								<select id="world-showcoordinates" onchange="gamerule('showcoordinates '+this.value); ">
 									<option style="display: none;">未获取</option>
@@ -271,11 +263,12 @@
 			</div>
 			<!-- 玩家控制 -->
 			<div class="show" id="list-player">
+				<h3>测试功能，没有UI</h3>
 				<div class="show-main">
 					<span>刷新玩家列表：</span>
 					<input type="button" value="刷新" onclick="playerList()">
 					<span>数据更新时间：</span>
-					<table border="" cellspacing="" cellpadding="">
+<!-- 					<table border="" cellspacing="" cellpadding="">
 						<tr>
 							<th>玩家名称</th>
 							<th>玩家坐标</th>
@@ -289,27 +282,80 @@
 							<td>Data</td>
 							<td>Data</td>
 						</tr>
-					</table>
+					</table> -->
 
-					<input type="button" value="调试模式" onclick="testtest()">
+					<input type="button" value="调试模式" onclick="playerList2()">
 					<script>
-						function testtest() {
-							document.getElementById("player-list").innerHTML = "";
-							var obj = ["玩家1", "玩家2"];
-							for (var i = 0; i < obj.length; i++) {
-								document.getElementById("player-list").innerHTML +=
-									`这里放玩家列表。分配临时id<br>`;
-							}
+						function playerList2() {
+							// 获取玩家
+							let msgDiv = $("player-list");
+							let playerArray = ["玩家1","玩家2","玩家2"]; //局部临时玩家列表
+							let styleHight = 0;
+							msgDiv.innerHTML = "";
+							setTimeout(function() {
+								for (let i = 0; i < playerArray.length; i++) {
+									styleHight+=30;
+									$("player-list").style.height = styleHight+ "px";
+									msgDiv.innerHTML += "玩家：" + playerArray[i] + "<br />";
+									
+								}
+							}, 10);
+							// 将玩家写入页面
+							setTimeout(async function(){
+								let select = document.getElementsByClassName("player-select");
+								for (var i = 0; i < select.length; i++) {
+									select[i].innerHTML = `<option style="display: none;">选择玩家</option>`
+									for (var j = 0; j < playerArray.length; j++) {
+										select[i].innerHTML += "<option value='" + playerArray[j] + "'>" + playerArray[j] +
+											"</option>"
+									}
+								}
+							},11);
 						};
 					</script>
-					<div>
-						<span>玩家名</span>
-						<select name="" id=""></select>
-						<select name="" id="">
-							<option value="" style="display: none;">选择操作</option>
-						</select>
-						<input type="button" value="执行">
+					
+					<div id="player-select-div">
+						<div>
+							<span>快捷操作(开发中)</span>
+							<select name="" id="player-select-1" class="player-select">
+								<option value="" style="display: none;">选择玩家</option>
+							</select>
+							<select name="" id="player-select-1-1">
+								<option value="0" style="display: none;">选择操作</option>
+							</select>
+							<!-- <input type="button" value="执行" onclick="testRun()"> -->
+							<script>
+								function testRun(){
+									let player = $("player-select-1");
+									let slect = $("player-select-1-1");
+									alert(player.value+slect.value)
+								}
+							</script>
+						</div>
+						<div>
+							<span>生物生成(开发中)</span>
+							<select name="" id="player-select-2" class="player-select">
+								<option value="" style="display: none;">选择玩家</option>
+							</select>
+							<select name="" id="player-select-2-1">
+								<option value="" style="display: none;">选择操作</option>
+							</select>
+							<!-- <input type="button" value="执行"> -->
+						</div>
+						<div>
+							<span>药水效果</span>
+							<select name="" id="player-select-3" class="player-select">
+								<option value="" style="display: none;">选择玩家</option>
+							</select>
+							<select name="" id="player-select-3-1">
+								<option value="" style="display: none;">选择操作</option>
+							</select>
+							<input type="text" id="player-select-3-2" placeholder="持续时间（秒">
+							<input type="text" id="player-select-3-3" placeholder="等级1-255">
+							<input type="button" value="执行" onclick="effectSelect()">
+						</div>
 					</div>
+					
 					<div id="player-list">
 
 					</div>
@@ -320,22 +366,23 @@
 			<div class="show" id="list-input">
 				<div class="show-main">
 					<span>还没找到方便的接口</span>
-					<p>，计划做一个引导工具</p>
+					<p>，这里暂时还是饼</p>
 				</div>
 			</div>
 
 			<!-- 配置编辑 -->
 			<div class="show" id="list-jsonset">
 				<div class="show-main">
-					<span>先把界面画好在做这个</span>
+					<span>这里暂时还是饼</span>
 				</div>
 			</div>
 
 			<!-- 数据查询 -->
 			<div class="show" id="list-slelect">
 				<div class="show-main">
-					<p>正在找高性能解析方案</p>
+					<p>正在找方案</p>
 					<span>由于浏览器安全策略限制，没有API这里将是一个json上传分析工具</span>
+					<p>，这里暂时还是饼</p>
 				</div>
 			</div>
 
@@ -348,4 +395,5 @@
 	</body>
 	<script src="js/WebSocket.js"></script>
 	<script src="js/shell.js"></script>
+	<script src="js/onload.js"></script>
 </html>

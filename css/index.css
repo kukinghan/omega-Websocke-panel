@@ -176,22 +176,28 @@ html {
 	font-size: 18px;
 }
 
-#world-info tr,#world-info th,#world-info td select{
+#world-info tr,
+#world-info th,
+#world-info td select {
 	padding: 7px;
 	width: 100px;
 	text-align: center;
 	font-size: 15px;
 }
-#world-info td select option{
+
+#world-info td select option {
 	font-size: 15px;
 	text-align: center;
 }
 
 /* 玩家控制 */
 #player-list {
-	width: 800px;
-	height: 200px;
+	width: 300px;
+	height: 30px;
 	border: 2px solid darkgray;
+}
+#player-select-3-2,#player-select-3-3{
+	width: 80px;
 }
 
 /* 建筑导入 */

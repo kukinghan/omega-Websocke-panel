@@ -1,8 +1,5 @@
 let timeVal; //设定时间值
-var playerListArray = {}; //临时储存的玩家列表
-onload = function() {
-	classSwitch("list-mian");
-};
+var playerListArray = []; //临时储存的玩家列表
 
 
 /*
@@ -12,7 +9,7 @@ onload = function() {
  */
 // 页面切换（排它显示）
 // 隐藏
-function showNone() {
+async function showNone() {
 	let obj = document.getElementsByClassName("show");
 	for (let i = 0; i < obj.length; i++) {
 		obj[i].style = "display: none;"
@@ -20,7 +17,7 @@ function showNone() {
 };
 
 // 显示切换
-function classSwitch(obj){
+async function classSwitch(obj) {
 	showNone();
 	document.getElementById(obj).style = "display: inline";
 }
@@ -159,7 +156,7 @@ function worldInfo() {
 		}
 		DayTime.innerHTML = Math.trunc(omgData.data.DayTimePercent * 24) + "点";
 		SpawnPosition.innerHTML = omgData.data.OnConnectWoldSpawnPosition;
-		CommandsEnabled.value = omgData.data.CommandsEnabled;
+		CommandsEnabled.innerHTML = tozhcn(omgData.data.CommandsEnabled);
 		showcoordinates.value = omgData.data.GameRules.showcoordinates.Value;
 		doweathercycle.value = omgData.data.GameRules.doweathercycle.Value;
 		pvp.value = omgData.data.GameRules.pvp.Value;
@@ -180,12 +177,15 @@ function worldInfo() {
 // 获取玩家列表
 function playerList() {
 	// 获取玩家
-	let msgDiv = document.getElementById("player-list");
-	let playerArray = []; //局部临时玩家列表
+	let msgDiv = $("player-list");
+	let playerArray = [];
+	let styleHight = 10;
 	msgDiv.innerHTML = "";
 	functionMsg("get_players_list");
 	setTimeout(function() {
 		for (let i = 0; i < omgData.data.length; i++) {
+			styleHight += 30;
+			$("player-list").style.height = styleHight + "px";
 			msgDiv.innerHTML += "玩家：" + omgData.data[i].name + "<br />";
 			playerArray.push(omgData.data[i].name);
 		}
@@ -193,7 +193,36 @@ function playerList() {
 	playerListArray = playerArray;
 	console.log(playerListArray);
 	// 将玩家写入页面
+	setTimeout(async function() {
+		let select = document.getElementsByClassName("player-select");
+		for (var i = 0; i < select.length; i++) {
+			select[i].innerHTML = `<option style="display: none;">选择玩家</option>`
+			for (var j = 0; j < playerListArray.length; j++) {
+				select[i].innerHTML += "<option value='" + playerListArray[j] + "'>" + playerListArray[j] +
+					"</option>"
+			}
+		}
+	}, 11);
 };
+
+// 效果执行
+function effectSelect(){
+	let player = $("player-select-3");
+	let effectvalue = $("player-select-3-1");
+	let time = $("player-select-3-2");
+	let level = $("player-select-3-3");
+	effect(player.value,effectvalue.value,time.value,level.value)
+}
+
+// 药水效果
+function effect(player,effect,time,level){
+	console.log("药水效果[玩家:"+player+"效果："+effect+"持续时间:"+time+"]")
+	if (effect == "clear") {
+		WebsocketMsg("/effect "+player+" "+effect)
+	} else{
+		WebsocketMsg("/effect "+player+" "+effect+" "+time+" "+level)
+	}
+}
 
 /*建筑导入页
  *
@@ -224,26 +253,26 @@ function playerList() {
  *
  */
 
-// function tozhcn(obj){
-// 	if (obj == true) {
-// 		return "是";
-// 	} else if(obj == false){
-// 		return "否";
-// 	}
-// 	return "获取失败";
-// }
+function tozhcn(obj) {
+	if (obj == true) {
+		return "是";
+	} else if (obj == false) {
+		return "否";
+	}
+	return "获取失败";
+}
 
 //修改游戏难度
-function difficulty(value){
-	WebsocketMsg("/difficulty "+value);
+function difficulty(value) {
+	WebsocketMsg("/difficulty " + value);
 }
 
 //修改游戏规则
-function gamerule(value){
+function gamerule(value) {
 	WebsocketMsg("/gamerule " + value);
 }
 
 // DomID
-function $(id){
+function $(id) {
 	return document.getElementById(id);
 }
