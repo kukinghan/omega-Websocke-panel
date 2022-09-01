@@ -1,3 +1,9 @@
+/*
+ *	本js负责WebSocket通信
+ *	处理返回内容
+ */
+
+
 var msg; //传参消息
 var msgID = 0; //请求序号
 var msgDiv = document.getElementById("omg-msgDiv"); //右返回列表
@@ -5,25 +11,18 @@ var socket; //WebSocket
 var omgData; //omg返回内容
 window.onload = setSocket();
 
-/*
- *	本js负责WebSocket通信
- *	处理返回内容
- */
-
 // WebSocket连接
 function setSocket() {
 	let classs = document.getElementsByClassName("omgLink");
 	for (let i = 0; i < classs.length; i++) {
 		classs[i].innerHTML = '<span style="color: orange;">正在尝试与omg通信❥~~~</span>'
 	}
-
 	socket = new WebSocket('ws://' + String(document.getElementById("socket").value) + '/omega_side ')
-
 	socket.addEventListener('open', function() {
 		for (let i = 0; i < classs.length; i++) {
 			classs[i].innerHTML = '<span style="color: green;">连接服务成功了</span>'
 		}
-	})
+	});
 	//接收websocket服务的数据
 	socket.addEventListener('message', function(e) {
 		console.log(e.data);
@@ -37,7 +36,7 @@ function setSocket() {
 		} else {
 			msgDiv.innerHTML += "失败";
 		}
-	})
+	});
 	socket.addEventListener('close', function() {
 		for (let i = 0; i < classs.length; i++) {
 			classs[i].innerHTML = '<span style="color: red;">服务断开连接</span>';
@@ -45,7 +44,7 @@ function setSocket() {
 	})
 }
 
-// 重连WebSocket//留个函数等扩展
+// 重连WebSocket
 function socketClose() {
 	try {
 		socket.close();

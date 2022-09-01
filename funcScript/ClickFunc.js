@@ -1,4 +1,3 @@
-let timeVal; //设定时间值
 var playerListArray = []; //临时储存的玩家列表
 
 
@@ -77,7 +76,7 @@ function msgFunction() {
 // 时间显示
 function numValueGain() {
 	let valNum = document.getElementById("world-timeRangeValue");
-	timeVal = document.getElementById("world-timeRange").value;
+	let timeVal = document.getElementById("world-timeRange").value;
 	valNum.innerHTML = timeVal;
 };
 
@@ -202,11 +201,21 @@ function playerList() {
 					"</option>"
 			}
 		}
+		$("player-list-time").innerHTML = Date();
 	}, 11);
-};
-
+}
+// 快捷操作
+function playerCommandSelect(){
+	
+}
+// 生成生物
+function playerSummonSelect(){
+	let player = $("player-select-2");
+	let monster = $("player-select-2-1");
+	// WebsocketMsg("/effect "+player+" "+effect);
+}
 // 效果执行
-function effectSelect(){
+function playerEffectSelect(){
 	let player = $("player-select-3");
 	let effectvalue = $("player-select-3-1");
 	let time = $("player-select-3-2");
@@ -214,15 +223,8 @@ function effectSelect(){
 	effect(player.value,effectvalue.value,time.value,level.value)
 }
 
-// 药水效果
-function effect(player,effect,time,level){
-	console.log("药水效果[玩家:"+player+"效果："+effect+"持续时间:"+time+"]")
-	if (effect == "clear") {
-		WebsocketMsg("/effect "+player+" "+effect)
-	} else{
-		WebsocketMsg("/effect "+player+" "+effect+" "+time+" "+level)
-	}
-}
+
+
 
 /*建筑导入页
  *
@@ -247,32 +249,6 @@ function effect(player,effect,time,level){
  */
 
 
-/*工具函数
- *
- *	这里是封装好的工具
- *
- */
 
-function tozhcn(obj) {
-	if (obj == true) {
-		return "是";
-	} else if (obj == false) {
-		return "否";
-	}
-	return "获取失败";
-}
 
-//修改游戏难度
-function difficulty(value) {
-	WebsocketMsg("/difficulty " + value);
-}
 
-//修改游戏规则
-function gamerule(value) {
-	WebsocketMsg("/gamerule " + value);
-}
-
-// DomID
-function $(id) {
-	return document.getElementById(id);
-}

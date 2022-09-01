@@ -1,18 +1,11 @@
 onload = function() {
 	classSwitch("list-mian");
-	onloadEffecct()
+	onloadEffecct();
+	onloadSelect();
 };
 
 async function onloadEffecct() {
-	let playerSelect = $("player-select-1-1");
 	let effectFiv = $("player-select-3-1");
-	playerSelect.innerHTML += `
-		<option value="kill">杀死玩家</option>
-		<option value="clearItem">清空背包</option>
-		<option value="chearBox">清空末影箱</option>
-		<option value="chearPet">清除宠物背包</option>
-		<option value="">装备皮革套</option>
-	`;
 	effectFiv.innerHTML +=`
 		<option value="clear">清除效果</option>
 		<option value="speed">速度</option>
@@ -42,4 +35,14 @@ async function onloadEffecct() {
 		<option value="slow_falling">缓降</option>
 	`;
 
+}
+async function onloadSelect(){
+	let playerSelect = $("player-select-1-1");
+	playerSelect.innerHTML += `
+		<option value="kill">杀死玩家</option>
+		<option value="clearItem">清空背包</option>
+		<option value="chearBox">清空末影箱</option>
+		<option value="chearPet">清除宠物背包</option>
+		<option value="">装备皮革套</option>
+	`;
 }

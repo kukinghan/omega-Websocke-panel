@@ -152,7 +152,7 @@
 						</tr>
 					</table>
 					<br />
-					<hr width="900px" />
+					<hr width="90%" />
 					<br />
 					<span>获取世界信息</span>
 					<input class="shellButton" type="button" value="刷新" onclick="worldInfo()"
@@ -268,6 +268,7 @@
 					<span>刷新玩家列表：</span>
 					<input type="button" value="刷新" onclick="playerList()">
 					<span>数据更新时间：</span>
+					<span id="player-list-time"></span>
 <!-- 					<table border="" cellspacing="" cellpadding="">
 						<tr>
 							<th>玩家名称</th>
@@ -289,7 +290,7 @@
 						function playerList2() {
 							// 获取玩家
 							let msgDiv = $("player-list");
-							let playerArray = ["玩家1","玩家2","玩家2"]; //局部临时玩家列表
+							let playerArray = ["玩家1","玩家2","玩家2","玩家3","玩家4","玩家5"]; //局部临时玩家列表
 							let styleHight = 0;
 							msgDiv.innerHTML = "";
 							setTimeout(function() {
@@ -297,8 +298,8 @@
 									styleHight+=30;
 									$("player-list").style.height = styleHight+ "px";
 									msgDiv.innerHTML += "玩家：" + playerArray[i] + "<br />";
-									
 								}
+								msgDiv.innerHTML += "玩家：kukinghan<br />";
 							}, 10);
 							// 将玩家写入页面
 							setTimeout(async function(){
@@ -309,55 +310,65 @@
 										select[i].innerHTML += "<option value='" + playerArray[j] + "'>" + playerArray[j] +
 											"</option>"
 									}
+									select[i].innerHTML += "<option value='kukinghan'>kukinghan</option>"
 								}
 							},11);
 						};
 					</script>
 					
 					<div id="player-select-div">
-						<div>
-							<span>快捷操作(开发中)</span>
-							<select name="" id="player-select-1" class="player-select">
-								<option value="" style="display: none;">选择玩家</option>
-							</select>
-							<select name="" id="player-select-1-1">
-								<option value="0" style="display: none;">选择操作</option>
-							</select>
-							<!-- <input type="button" value="执行" onclick="testRun()"> -->
-							<script>
-								function testRun(){
-									let player = $("player-select-1");
-									let slect = $("player-select-1-1");
-									alert(player.value+slect.value)
-								}
-							</script>
-						</div>
-						<div>
-							<span>生物生成(开发中)</span>
-							<select name="" id="player-select-2" class="player-select">
-								<option value="" style="display: none;">选择玩家</option>
-							</select>
-							<select name="" id="player-select-2-1">
-								<option value="" style="display: none;">选择操作</option>
-							</select>
-							<!-- <input type="button" value="执行"> -->
-						</div>
-						<div>
-							<span>药水效果</span>
-							<select name="" id="player-select-3" class="player-select">
-								<option value="" style="display: none;">选择玩家</option>
-							</select>
-							<select name="" id="player-select-3-1">
-								<option value="" style="display: none;">选择操作</option>
-							</select>
-							<input type="text" id="player-select-3-2" placeholder="持续时间（秒">
-							<input type="text" id="player-select-3-3" placeholder="等级1-255">
-							<input type="button" value="执行" onclick="effectSelect()">
-						</div>
+						<table>
+							<tr>
+								<td>
+									<span>快捷操作(开发中)</span>
+								</td>
+								<td>
+									<select name="" id="player-select-1" class="player-select">
+										<option value="" style="display: none;">选择玩家</option>
+									</select>
+									<select name="" id="player-select-1-1">
+										<option value="0" style="display: none;">选择操作</option>
+									</select>
+								</td>
+								<td>
+									<input type="button" value="执行" onclick="playerCommandSelect()">
+								</td>
+							</tr>
+							<tr>
+								<td><span>生物生成</span></td>
+								<td>
+									<select name="" id="player-select-2" class="player-select">
+										<option value="" style="display: none;">选择玩家</option>
+									</select>
+									<select name="" id="player-select-2-1">
+										<option value="" style="display: none;">选择操作</option>
+									</select>
+								</td>
+								<td>
+									<input type="button" value="执行" onclick="playerSummonSelect()">
+								</td>
+							</tr>
+							<tr>
+								<td><span>药水效果</span></td>
+								<td>
+									<select name="" id="player-select-3" class="player-select">
+										<option value="" style="display: none;">选择玩家</option>
+									</select>
+									<select name="" id="player-select-3-1">
+										<option value="" style="display: none;">选择操作</option>
+									</select>
+									<input type="text" id="player-select-3-2" placeholder="持续时间（秒">
+									<input type="text" id="player-select-3-3" placeholder="等级1-255">
+								</td>
+								<td>
+									<input type="button" value="执行" onclick="playerEffectSelect()">
+								</td>
+							</tr>
+						</table>
 					</div>
 					
 					<div id="player-list">
-
+						<!-- 玩家列表 -->
 					</div>
 				</div>
 			</div>
@@ -393,7 +404,9 @@
 
 		</div>
 	</body>
+	<script src="js/Util.js"></script>
 	<script src="js/WebSocket.js"></script>
-	<script src="js/shell.js"></script>
-	<script src="js/onload.js"></script>
+	<script src="js/ClickFunc.js"></script>
+	<!-- 加载完成，初始化 -->
+	<script src="js/Onload.js"></script>
 </html>
